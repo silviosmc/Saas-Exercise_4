@@ -1,0 +1,78 @@
+@use "var.scss";
+@use "func.scss";
+
+$font-size: func.$converterResult;
+
+@mixin box ($color, $border-color, $font-size) {
+    color: $color;
+    border: 1px solid $border-color;
+    font-size: $font-size;
+}
+
+.text {
+    color: var.$tertiary-color;
+    text-decoration: underline;
+    text-decoration-color: var.$secondary-color;
+}
+
+.container {
+    border: 1px solid var.$primary-color;
+    text-align: center;
+    margin: 10px;
+
+    .title {
+        @extend .text;
+    }
+
+    .subtitle {
+        @extend .text;
+        padding: $font-size;
+        border: 1px solid red;
+        width: fit-content;
+        margin: auto;
+        text-decoration: none;
+    }
+   
+    
+    #main {
+        display: flex;
+        justify-content: flex-start;
+        margin: 20px;
+
+        article {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+            &:nth-child(odd) {
+                @include box(var.$secondary-color, var.$tertiary-color, $font-size);
+            }
+
+            &:nth-child(even) {
+                @include box(var.$primary-color, var.$tertiary-color, $font-size);
+            }
+
+            p {
+                padding: 10px;
+            }
+        }
+    }
+
+
+    #footer {
+        display: flex;
+        justify-content: flex-start;
+        margin: 20px;
+
+        article {
+            @include box(var.$tertiary-color, var.$secondary-color, 2rem);
+        }
+    }
+}
+
+
+
+
+
+
+
